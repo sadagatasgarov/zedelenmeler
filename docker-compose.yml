@@ -26,12 +26,10 @@ services:
     ports:
       - "8080:80"
 
-  backend:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    container_name: project_name_backend
-    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python3 manage.py runserver 0.0.0.0:8000 && python3 manage.py createsuperuser"
+  zedelenme:
+    image: sadagatasgarov/zedelenme
+    container_name: zedelenme
+    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python3 manage.py runserver 0.0.0.0:8000"
     restart: always
     volumes:
       - .:/app
