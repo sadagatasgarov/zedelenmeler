@@ -97,7 +97,7 @@ DATABASES = {
         "NAME": "zedelenme",
         "USER": "root",
         "PASSWORD": "your_root_password",
-        "HOST": "127.0.0.1",
+        "HOST": "dbpr",
         "PORT": "3306",
     }
 }
