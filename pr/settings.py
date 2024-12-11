@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u5fo97-!)3#4&%36b=6l9y-d$6zr87mde4*dn5h#qtm@pe%r68'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [config('DJANGO_ALLOWED_HOST1'), config('DJANGO_ALLOWED_HOST2'), config('DJANGO_ALLOWED_HOST3')]
 
 
 # Application definition
@@ -91,17 +91,27 @@ WSGI_APPLICATION = 'pr.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "zedelenme",
+#         "USER": "root",
+#         "PASSWORD": "your_root_password",
+#         "HOST": "dbpr",
+#         "PORT": "3306",
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "zedelenme",
-        "USER": "root",
-        "PASSWORD": "your_root_password",
-        "HOST": "dbpr",
-        "PORT": "3306",
+        "NAME": config('MYSQL_DATABASE'),
+        "USER": config('MYSQL_USER','root'),
+        "PASSWORD": config('MYSQL_PASSWORD', config('MYSQL_ROOT_PASSWORD')),
+        "HOST": config('DB_HOST', 'dbpr'),
+        "PORT": config('DB_PORT', '3306'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
