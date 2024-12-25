@@ -37,14 +37,12 @@ services:
       MYSQL_DATABASE: zedelenme
       MYSQL_USER: test
       MYSQL_PASSWORD: your_password
-      # DEBUG: ${DEBUG}
-      # SECRET_KEY: ${SECRET_KEY}
+      DEBUG: True
+      SECRET_KEY: "django-insecure-u5fo97-!)3#4&%36b=6l9y-d$6zr87mde4*dn5h#qtm@pe%r68"
       # DJANGO_ALLOWED_HOST1: ${DJANGO_ALLOWED_HOST1}
       # DJANGO_ALLOWED_HOST2: ${DJANGO_ALLOWED_HOST2}
       # DJANGO_ALLOWED_HOST3: ${DJANGO_ALLOWED_HOST3}
     ports:
       - "8000:8000"
-    env_file:
-      - .env
     depends_on:
       - dbpr
