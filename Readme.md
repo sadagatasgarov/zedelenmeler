@@ -2,7 +2,8 @@ Proyekte baxmaq isteyen sadece
 docker-compose-default.yml faylini endirsin.
 Endirdiyi qovluqda
 Bu komandani yazsin ise salsın
-```docker compose -f docker-compose-default.yml up -d
+```
+docker compose -f docker-compose-default.yml up -d
 ```
 İşləməsi üçün sadəcə "docker" və "docker compose" olmasi kifayətdir
 İnfrastruktur ozu qurulacaq
