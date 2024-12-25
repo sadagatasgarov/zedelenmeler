@@ -26,7 +26,7 @@ services:
       - "8080:80"
 
   zedelenme:
-    image: sadagatasgarov/zedelenmeler
+    image: sadagatasgarov/zedelenmeler:0.0.1
     container_name: zedelenme
     command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python3 manage.py runserver 0.0.0.0:8000"
     restart: always

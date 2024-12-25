@@ -1,0 +1,50 @@
+version: '3.7'
+
+services:
+  dbpr:
+    image: mysql:9.1.0
+    container_name: zedelenmeler_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: zedelenme
+      MYSQL_USER: test
+      MYSQL_PASSWORD: your_password
+    volumes:
+      - ./zedelenmeler_db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.1
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - dbpr
+    environment:
+      PMA_HOST: dbpr
+      MYSQL_ROOT_PASSWORD: your_root_password
+    ports:
+      - "8080:80"
+
+  zedelenme:
+    image: sadagatasgarov/zedelenmeler:0.0.1
+    container_name: zedelenmeler
+    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python3 manage.py runserver 0.0.0.0:8000"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: zedelenme
+      MYSQL_USER: test
+      MYSQL_PASSWORD: your_password
+      # DEBUG: ${DEBUG}
+      # SECRET_KEY: ${SECRET_KEY}
+      # DJANGO_ALLOWED_HOST1: ${DJANGO_ALLOWED_HOST1}
+      # DJANGO_ALLOWED_HOST2: ${DJANGO_ALLOWED_HOST2}
+      # DJANGO_ALLOWED_HOST3: ${DJANGO_ALLOWED_HOST3}
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - dbpr
