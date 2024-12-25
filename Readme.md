@@ -10,6 +10,7 @@ docker compose -f docker-compose-default.yml up -d
 localhost:8000 ilə baxa bilər
 
 port dəyişmək lazımdirsa docker-compose faylinin icindeən dəyişə bilər
+
 ilkin giriş üçün login parolu da zedelenmelere girib python manage.py vreate superuser ilə yara da bilər.
 
 sonrasında bütün idarə etmə üeb interfeysi üzərindən olacaq.
