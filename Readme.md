@@ -11,10 +11,10 @@ localhost:8000 ilə baxa bilər
 
 port dəyişmək lazımdirsa docker-compose faylinin icindeən dəyişə bilər
 
-ilkin giriş üçün login parolu da zedelenmelere girib python manage.py vreate superuser ilə yara da bilər.
+ilkin giriş üçün login parolu da zedelenmelere girib python manage.py create superuser ilə yara da bilər.
 
 sonrasında bütün idarə etmə üeb interfeysi üzərindən olacaq.
 
-databazanın credentialları isə ddocker compose faylinin icindən təyin edisiniz.
+databazanın credentialları isə docker compose faylinin icindən təyin edisiniz.
 
 .env fayli istəyə baglı əlavə edilə bilər
