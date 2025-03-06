@@ -9,6 +9,10 @@ docker compose -f docker-compose-default.yml up -d
 İnfrastruktur ozu qurulacaq
 localhost:8000 ilə baxa bilər
 
+```
+docker exec -it zedelenmeler python manage.py createsuperuser
+```
+
 port dəyişmək lazımdirsa docker-compose faylinin icindeən dəyişə bilər
 
 ilkin giriş üçün login parolu da zedelenmelere girib python manage.py create superuser ilə yara da bilər.
