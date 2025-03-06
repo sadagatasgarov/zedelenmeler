@@ -9,6 +9,8 @@ docker compose -f docker-compose-default.yml up -d
 İnfrastruktur ozu qurulacaq
 localhost:8000 ilə baxa bilər
 
+
+ilkin giriş üçün login parolu
 ```
 docker exec -it zedelenmeler python manage.py createsuperuser
 ```
